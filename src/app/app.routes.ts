@@ -7,6 +7,12 @@ export const routes: Routes = [
     component: ProductListPage,
   },
   {
+    path: ':id',
+    loadComponent: () =>
+      import('./pages/product-details/product-details.component')
+        .then(m => m.ProductDetailsPage)
+  },
+  {
     path: '**',
     redirectTo: '',
   },

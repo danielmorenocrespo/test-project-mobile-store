@@ -21,4 +21,10 @@ export class ProductsService {
         this.products.set(data);
       });
   }
+
+  async loadProduct(id: string) {
+    return this.http
+      .get<any>(`${this.baseUrl}/product/${id}`)
+      .toPromise();
+  }
 }
