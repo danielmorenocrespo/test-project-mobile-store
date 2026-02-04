@@ -1,4 +1,14 @@
-<div class="card">
+<a class="card" [routerLink]="['/', product.id]">
+  <div class="image-wrap">
+    <img [src]="product.imgUrl"/>
+  </div>
 
-  <p>{{product.brand}}</p>
-</div>
+  <div class="info">
+    <strong class="brand">{{ product.brand }}</strong>
+    <span class="model">{{ product.model }}</span>
+
+    <div class="footer">
+      <b class="price">{{ product.price | currency:'EUR' }}</b>
+    </div>
+  </div>
+</a>

@@ -1,1 +1,12 @@
-<p>search-bar works!</p>
+<div class="search">
+  <input
+    type="text"
+    placeholder="Buscar por marca o modelo..."
+    [value]="value()"
+    (input)="onInput($any($event.target).value)"
+  />
+
+  @if (hasValue()) {
+    <button class="clear" (click)="clear()">✕</button>
+  }
+</div>
