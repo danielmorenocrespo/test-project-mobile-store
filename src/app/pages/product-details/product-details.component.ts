@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { ProductsService } from '../../core/services/products.service';
+import { CartStore } from '../../core/services/cart.store.service';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class ProductDetailsPage implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private api: ProductsService,
+    private cart: CartStore
   ) { }
 
 
@@ -59,5 +61,13 @@ export class ProductDetailsPage implements OnInit {
 
     const product = await this.api.loadProduct(id);
     this.product.set(product);
+  }
+
+    async addToCart() {
+    if (this.form.invalid || !this.product()) return;
+
+    const { color, storage } = this.form.value;
+    const count = await this.api.addToCart(this.product()!.id, color, storage);
+    this.cart.set(count);
   }
 }

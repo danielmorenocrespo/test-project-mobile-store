@@ -1,59 +1,57 @@
 <a routerLink="/" class="back-btn">Volver</a>
 
 @if (product()) {
-  <section class="container-background">
-    <div class="image-panel">
-      <img [src]="product()!.imgUrl" />
+<section class="container-background">
+  <div class="image-panel">
+    <img [src]="product()!.imgUrl" />
+  </div>
+
+  <div class="info-panel">
+    <span class="brand">{{ product()!.brand }}</span>
+    <h1 class="title">{{ product()!.model }}</h1>
+
+    <div class="price-row">
+      <span class="price">{{ product()!.price | currency:'EUR' }}</span>
     </div>
 
-    <div class="info-panel">
-      <span class="brand">{{ product()!.brand }}</span>
-      <h1 class="title">{{ product()!.model }}</h1>
+    <ul class="specs">
+      <li><b>CPU:</b> {{ product()!.cpu }}</li>
+      <li><b>RAM:</b> {{ product()!.ram }}</li>
+      <li><b>OS:</b> {{ product()!.os }}</li>
+      <li><b>Pantalla:</b> {{ product()!.displaySize }}</li>
+      <li><b>Batería:</b> {{ product()!.battery }}</li>
+      <li><b>Cámaras:</b> {{ cameras() }}</li>
+      <li><b>Dimensiones:</b> {{ product()!.dimentions }}</li>
+      <li><b>Peso:</b> {{ product()!.weight }}</li>
+    </ul>
 
-      <div class="price-row">
-        <span class="price">{{ product()!.price | currency:'EUR' }}</span>
-      </div>
+    <form [formGroup]="form" class="selectors">
+      <label>
+        Color
+        <select formControlName="color">
+          @for (color of product()!.options.colors ?? []; track color.code) {
+          <option [value]="color.code">
+            {{ color.name }}
+          </option>
+          }
+        </select>
+      </label>
 
-      <ul class="specs">
-        <li><b>CPU:</b> {{ product()!.cpu }}</li>
-        <li><b>RAM:</b> {{ product()!.ram }}</li>
-        <li><b>OS:</b> {{ product()!.os }}</li>
-        <li><b>Pantalla:</b> {{ product()!.displaySize }}</li>
-        <li><b>Batería:</b> {{ product()!.battery }}</li>
-        <li><b>Cámaras:</b> {{ cameras() }}</li>
-        <li><b>Dimensiones:</b> {{ product()!.dimentions }}</li>
-        <li><b>Peso:</b> {{ product()!.weight }}</li>
-      </ul>
+      <label>
+        Almacenamiento
+        <select formControlName="storage">
+          @for (storage of product()!.options.storages ?? []; track storage.code) {
+          <option [value]="storage.code">
+            {{ storage.name }}
+          </option>
+          }
+        </select>
+      </label>
+    </form>
 
-      <form [formGroup]="form" class="selectors">
-        <label>
-          Color
-          <select formControlName="color">
-            @for (color of product()!.options.colors ?? []; track color.code) {
-              <option [value]="color.code">
-                {{ color.name }}
-              </option>
-            }
-          </select>
-        </label>
-
-        <label>
-          Almacenamiento
-          <select formControlName="storage">
-            @for (storage of product()!.options.storages ?? []; track storage.code) {
-              <option [value]="storage.code">
-                {{ storage.name }}
-              </option>
-            }
-          </select>
-        </label>
-      </form>
-
-      <button
-        class="cta"
-        [disabled]="form.invalid">
-        Añadir al carrito
-      </button>
-    </div>
-  </section>
+    <button class="cta" [disabled]="form.invalid" (click)="addToCart()">
+      Añadir al carrito
+    </button>
+  </div>
+</section>
 }

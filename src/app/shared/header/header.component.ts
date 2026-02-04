@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CartStore } from '../../core/services/cart.store.service';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+  constructor(public cart: CartStore) {}
 
 }

@@ -4,7 +4,7 @@ import { Injectable, signal } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
 
-  baseUrl = 'https://itx-frontend-test.onrender.com/api';
+  baseUrl = '/api';
   products = signal<any[]>([]);
 
 
@@ -26,5 +26,23 @@ export class ProductsService {
     return this.http
       .get<any>(`${this.baseUrl}/product/${id}`)
       .toPromise();
+  }
+
+  async addToCart(id: string, color: string, storage: string) {
+    const res: any = await this.http
+      .post(`${this.baseUrl}/cart`, {
+        id,
+        colorCode: color,
+        storageCode: storage
+      }, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      .toPromise();
+
+
+    return res.count;
   }
 }
