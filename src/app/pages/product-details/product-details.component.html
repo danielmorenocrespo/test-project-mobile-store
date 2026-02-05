@@ -20,7 +20,10 @@
       <li><b>OS:</b> {{ product()!.os }}</li>
       <li><b>Pantalla:</b> {{ product()!.displaySize }}</li>
       <li><b>Batería:</b> {{ product()!.battery }}</li>
-      <li><b>Cámaras:</b> {{ cameras() }}</li>
+      <li><b>Cámara Principal</b> {{ this.product()?.primaryCamera }}</li>
+      @if (product()?.secondaryCmera) {
+      <li><b>Cámara Secundaria</b> {{ this.product()?.secondaryCmera }}</li>
+      }
       <li><b>Dimensiones:</b> {{ product()!.dimentions }}</li>
       <li><b>Peso:</b> {{ product()!.weight }}</li>
     </ul>
