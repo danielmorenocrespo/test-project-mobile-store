@@ -3,7 +3,7 @@
 @if (product()) {
 <section class="container-background">
   <div class="image-panel">
-    <img [src]="product()!.imgUrl" />
+    <img [src]="product()!.imgUrl" [alt]="product()!.brand + ' ' + product()!.model" />
   </div>
 
   <div class="info-panel">
@@ -29,7 +29,7 @@
       <label>
         Color
         <select formControlName="color">
-          @for (color of product()!.options.colors ?? []; track color.code) {
+          @for (color of product()!.options?.colors ?? []; track color.code) {
           <option [value]="color.code">
             {{ color.name }}
           </option>
@@ -40,7 +40,7 @@
       <label>
         Almacenamiento
         <select formControlName="storage">
-          @for (storage of product()!.options.storages ?? []; track storage.code) {
+          @for (storage of product()!.options?.storages ?? []; track storage.code) {
           <option [value]="storage.code">
             {{ storage.name }}
           </option>

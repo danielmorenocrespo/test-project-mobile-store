@@ -1,6 +1,6 @@
 <a class="card" [routerLink]="['/', product.id]">
   <div class="image-wrap">
-    <img [src]="product.imgUrl"/>
+    <img [src]="product.imgUrl" [alt]="product.brand + ' ' + product.model" />
   </div>
 
   <div class="info">

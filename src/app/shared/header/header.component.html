@@ -1,12 +1,12 @@
 <header class="header">
 
   <a routerLink="/" class="brand">
-    <img src="assets/img/logo.png" class="logo" />
+    <img src="assets/img/logo.png" class="logo" [alt]="'Mobile Store'" />
     <span class="title">Mobile Store</span>
   </a>
 
   <div class="cart">
-    <img src="assets/img/cart.svg" />
+    <img src="assets/img/cart.svg"  [alt]="'Mobile Store card'"/>
     @if (cart.count() > 0) {
     <span class="badge">{{ cart.count() }}</span>
     }

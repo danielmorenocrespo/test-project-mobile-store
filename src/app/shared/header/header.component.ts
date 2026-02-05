@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CartStore } from '../../core/services/cart.store.service';
 
@@ -10,6 +10,6 @@ import { CartStore } from '../../core/services/cart.store.service';
 })
 export class HeaderComponent {
 
-  constructor(public cart: CartStore) {}
+  public cart = inject(CartStore);
 
 }

@@ -14,15 +14,15 @@ export class SearchBarComponent {
 
   hasValue = computed(() => this.query().length > 0);
 
-  @Output() search = new EventEmitter<string>();
+  @Output() searchBar = new EventEmitter<string>();
 
   onInput(value: string) {
     this.query.set(value);
-    this.search.emit(value);
+    this.searchBar.emit(value);
   }
 
   clear() {
     this.query.set('');
-    this.search.emit('');
+    this.searchBar.emit('');
   }
 }

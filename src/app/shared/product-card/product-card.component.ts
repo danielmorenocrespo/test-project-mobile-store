@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Product } from '../../core/models/product.model';
 
 @Component({
   selector: 'app-product-card',
@@ -9,6 +10,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  @Input() product: any;
+  @Input() product!: Product;
 
 }

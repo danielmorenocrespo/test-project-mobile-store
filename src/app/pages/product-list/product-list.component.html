@@ -1,4 +1,4 @@
-<app-search-bar (search)="onSearch($event)"></app-search-bar>
+<app-search-bar (search)="onSearch($any($event.target).value)"></app-search-bar>
 
 <div class="grid">
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product.model';
 
 
 const TTL = 60 * 60 * 1000;
@@ -8,7 +9,7 @@ const TTL = 60 * 60 * 1000;
 export class CacheService {
 
 
-  getLocalStorage(key: string) {
+  getLocalStorage(key: string): Product[] | null {
     const localStorageData = localStorage.getItem(key);
     if (!localStorageData) return null;
 
@@ -24,7 +25,7 @@ export class CacheService {
   }
 
 
-  setLocalStorage(key: string, data: any) {
+  setLocalStorage(key: string, data: Product[]) {
     localStorage.setItem(key, JSON.stringify({
       data,
       timestamp: Date.now()
