@@ -30,9 +30,7 @@
         Color
         <select formControlName="color">
           @for (color of product()!.options?.colors ?? []; track color.code) {
-          <option [value]="color.code">
-            {{ color.name }}
-          </option>
+            <option [value]="color.code">{{ color.name }}</option>
           }
         </select>
       </label>
@@ -41,9 +39,7 @@
         Almacenamiento
         <select formControlName="storage">
           @for (storage of product()!.options?.storages ?? []; track storage.code) {
-          <option [value]="storage.code">
-            {{ storage.name }}
-          </option>
+            <option [value]="storage.code">{{ storage.name }}</option>
           }
         </select>
       </label>

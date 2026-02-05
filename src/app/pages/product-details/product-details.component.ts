@@ -31,20 +31,19 @@ export class ProductDetailsPage implements OnInit {
 
   private initEffect = effect(() => {
     const product = this.product();
-    if (!product) return;
 
-    if (product?.options?.colors?.length === 1) {
-      this.form.controls?.['color'].setValue(product.options.colors[0].name);
+    if (!product || !this.form) return;
+
+    if (product.options?.colors?.length === 1) {
+      this.form.controls['color'].setValue(product.options.colors[0].code);
     }
 
-    if (product?.options?.storages?.length === 1) {
-      this.form.controls?.['storage'].setValue(product.options.storages[0].name);
+    if (product.options?.storages?.length === 1) {
+      this.form.controls['storage'].setValue(product.options.storages[0].code);
     }
   });
 
-
   ngOnInit(): void {
-
     this.form = this.fb.group({
       color: ['', Validators.required],
       storage: ['', Validators.required]

@@ -19,7 +19,7 @@ export default class ProductListPage implements OnInit{
   filtered = computed(() => {
     const query = this.search().toLowerCase();
     return this.api.getProducts().filter(product =>
-      `${product.brand} ${product.model}`.toLowerCase().includes(query)
+      product.price && `${product.brand} ${product.model}`.toLowerCase().includes(query)
     );
   });
 

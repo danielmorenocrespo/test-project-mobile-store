@@ -10,6 +10,6 @@ import { Product } from '../../core/models/product.model';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  @Input() product!: Product;
+  @Input({ required: true }) product!: Product;
 
 }
